@@ -27,8 +27,8 @@ requirements:
     - requests
     - kt-legacy
     - tensorflow >=2.0
-    - tensorflow-cpu >=2.0
   run_constrained:
+    - tensorflow-cpu >=2.0
 
 test:
   imports:
