@@ -10,35 +10,32 @@ source:
   sha256: 6befd25ee81476e6207d8ca7ed7dc674b8194437cfa0b127294cd00da905ff22
 
 build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: True  # [py<37]
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python
+    - setuptools
+    - wheel
   run:
-    - python >=3.7
-    - Ipython
-    - kt-legacy
-    - numpy
+    - python
+    - keras
     - packaging
     - requests
-    - scikit-learn
-    - scipy
-    - tensorboard
+    - kt-legacy
     - tensorflow >=2.0
-
+    - tensorflow-cpu >=2.0
+  run_constrained:
 
 test:
   imports:
     - keras_tuner
     - keras_tuner.applications
-    - keras_tuner.distribute
     - keras_tuner.engine
     - keras_tuner.oracles
-    - keras_tuner.protos
     - keras_tuner.tuners
   commands:
     - pip check
@@ -51,6 +48,7 @@ about:
   license_family: APACHE
   license_file: LICENSE
   summary: Hypertuner for Keras
+  description: KerasTuner is an easy-to-use, scalable hyperparameter optimization framework that solves the pain points of hyperparameter search.
   doc_url: https://keras-team.github.io/keras-tuner/
   dev_url: https://github.com/keras-team/keras-tuner
 
