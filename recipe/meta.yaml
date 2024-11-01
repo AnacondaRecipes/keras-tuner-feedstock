@@ -22,10 +22,14 @@ requirements:
     - wheel
   run:
     - python
-    - keras
+    - Ipython
+    - kt-legacy
+    - numpy
     - packaging
     - requests
-    - kt-legacy
+    - scikit-learn
+    - scipy
+    - keras
     # extras
     - tensorflow >=2.0
     - tensorflow-cpu >=2.0
