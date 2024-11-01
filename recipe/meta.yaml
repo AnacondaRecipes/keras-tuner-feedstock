@@ -26,8 +26,8 @@ requirements:
     - packaging
     - requests
     - kt-legacy
+    # extras
     - tensorflow >=2.0
-  run_constrained:
     - tensorflow-cpu >=2.0
 
 test:
