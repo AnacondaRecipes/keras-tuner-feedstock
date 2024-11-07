@@ -28,7 +28,7 @@ requirements:
     - kt-legacy
     # extras
     - tensorflow >=2.0
-    - pytorch
+    - tensorflow-cpu >=2.0  # [linux]
 
 test:
   imports:
