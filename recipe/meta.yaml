@@ -34,10 +34,10 @@ requirements:
 test:
   imports:
     - keras_tuner
-    - keras_tuner.applications  # [not win and not s390x]
-    - keras_tuner.engine  # [not win and not s390x]
-    - keras_tuner.oracles  # [not win and not s390x]
-    - keras_tuner.tuners  # [not win and not s390x]
+    - keras_tuner.applications  # [not (win or s390x)]
+    - keras_tuner.engine  # [not (win or s390x)]
+    - keras_tuner.oracles  # [not (win or s390x)]
+    - keras_tuner.tuners  # [not (win or s390x)]
   commands:
     - pip check
   requires:
