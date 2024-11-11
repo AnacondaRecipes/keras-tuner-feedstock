@@ -33,7 +33,7 @@ requirements:
 
 test:
   imports:
-    - keras_tuner  # [not s390x or win]
+    - keras_tuner
     - keras_tuner.applications  # [not s390x or win]
     - keras_tuner.engine  # [not s390x or win]
     - keras_tuner.oracles  # [not s390x or win]
