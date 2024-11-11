@@ -26,18 +26,18 @@ requirements:
     - packaging
     - requests
     - kt-legacy
-    # extras
-    - tensorflow >=2.0
+    # extras for test imports
+    - tensorflow >=2.0  # [not win]
     - tensorflow-cpu >=2.0  # [linux]
     - pytorch  # [osx]
 
 test:
   imports:
-    - keras_tuner  # [not s390x]
-    - keras_tuner.applications  # [not s390x]
-    - keras_tuner.engine  # [not s390x]
-    - keras_tuner.oracles  # [not s390x]
-    - keras_tuner.tuners  # [not s390x]
+    - keras_tuner  # [not s390x or win]
+    - keras_tuner.applications  # [not s390x or win]
+    - keras_tuner.engine  # [not s390x or win]
+    - keras_tuner.oracles  # [not s390x or win]
+    - keras_tuner.tuners  # [not s390x or win]
   commands:
     - pip check
   requires:
