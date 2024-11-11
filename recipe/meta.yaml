@@ -27,7 +27,7 @@ requirements:
     - requests
     - kt-legacy
     # extras for test imports
-    - tensorflow >=2.0  # [not s390x]
+    - tensorflow >=2.0  # [not (win or s390x)]
     - tensorflow-cpu >=2.0  # [linux and not s390x]
     - pytorch  # [osx]
 
