@@ -10,7 +10,7 @@ source:
   sha256: 6befd25ee81476e6207d8ca7ed7dc674b8194437cfa0b127294cd00da905ff22
 
 build:
-  skip: True  # [py<37]
+  skip: True  # [py<37 or s390x]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -27,17 +27,17 @@ requirements:
     - requests
     - kt-legacy
     # extras
-    - tensorflow >=2.0  # [not (win or s390x)]
-    - tensorflow-cpu >=2.0  # [linux and not s390x]
+    - tensorflow >=2.0
+    - tensorflow-cpu >=2.0
     - pytorch  # [osx]
 
 test:
   imports:
-    - keras_tuner  # [not (win or s390x)]
-    - keras_tuner.applications  # [not (win or s390x)]
-    - keras_tuner.engine  # [not (win or s390x)]
-    - keras_tuner.oracles  # [not (win or s390x)]
-    - keras_tuner.tuners  # [not (win or s390x)]
+    - keras_tuner
+    - keras_tuner.applications
+    - keras_tuner.engine
+    - keras_tuner.oracles
+    - keras_tuner.tuners
   commands:
     - pip check
   requires:
