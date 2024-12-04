@@ -1,2 +1,2 @@
 channels:
-  - https://anaconda.org/build/tensorflow
+  - build
