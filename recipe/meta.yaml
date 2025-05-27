@@ -22,22 +22,23 @@ requirements:
     - wheel
   run:
     - python
-    - keras
+    - Ipython
+    - kt-legacy
+    - numpy
     - packaging
     - requests
-    - kt-legacy
-    # extras
-    - tensorflow >=2.0  # [not (win or s390x)]
-    - tensorflow-cpu >=2.0  # [linux and not s390x]
-    - pytorch  # [osx]
+    - scikit-learn
+    - scipy
+    - tensorboard
+    - tensorflow >=2.0
 
 test:
   imports:
-    - keras_tuner  # [not (win or s390x)]
-    - keras_tuner.applications  # [not (win or s390x)]
-    - keras_tuner.engine  # [not (win or s390x)]
-    - keras_tuner.oracles  # [not (win or s390x)]
-    - keras_tuner.tuners  # [not (win or s390x)]
+    - keras_tuner
+    - keras_tuner.applications
+    - keras_tuner.engine
+    - keras_tuner.oracles
+    - keras_tuner.tuners
   commands:
     - pip check
   requires:
