@@ -10,7 +10,8 @@ source:
   sha256: 6befd25ee81476e6207d8ca7ed7dc674b8194437cfa0b127294cd00da905ff22
 
 build:
-  skip: True  # [py<37]
+  # No tensorflow for python 3.13
+  skip: True  # [py<37 or py>=313]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
