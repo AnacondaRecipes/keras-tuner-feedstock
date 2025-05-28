@@ -31,6 +31,9 @@ requirements:
     - tensorflow-cpu >=2.0
     - scikit-learn
     - scipy
+    # Required on OSX as Keras 3.x defaults to PyTorch backend on this platform
+    # https://keras.io/getting_started/faq/#which-backend-should-i-use
+    - pytorch  # [osx]
 
 test:
   imports:
