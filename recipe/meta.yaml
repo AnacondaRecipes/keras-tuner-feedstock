@@ -21,6 +21,7 @@ requirements:
     - python
     - setuptools
     - wheel
+    - pytorch  # [osx]
   run:
     - python
     - keras
