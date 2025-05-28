@@ -22,15 +22,16 @@ requirements:
     - wheel
   run:
     - python
-    - Ipython
-    - kt-legacy
-    - numpy
+    - keras
     - packaging
     - requests
+    - kt-legacy
+    - tensorflow >=2.0
+    - tensorflow-cpu >=2.0
     - scikit-learn
     - scipy
-    - tensorboard
-    - tensorflow >=2.0
+    - namex
+    - build
 
 test:
   imports:
