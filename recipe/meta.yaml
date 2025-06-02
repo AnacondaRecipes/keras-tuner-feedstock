@@ -54,12 +54,6 @@ test:
     - pip check
   requires:
     - pip
-    # - scikit-learn
-    # - scipy
-    # - tensorflow >=2.0
-    # - tensorflow-cpu
-    # - keras
-    # - pytorch  # [osx]
 
 about:
   home: https://github.com/keras-team/keras-tuner
