@@ -29,23 +29,37 @@ requirements:
     - requests
     - kt-legacy
     - tensorflow >=2.0
-    - tensorflow-cpu >=2.0
+    - tensorflow-cpu
     - scikit-learn
     - scipy
-    # Required on OSX as Keras 3.x has a hard dependency on PyTorch for certain operations
+    # Required on OSX as Keras 3.x has a hard dependency on PyTorch for certain operations.
+    # This is due to Keras 3.x's multi-backend architecture where some operations on macOS
+    # are optimized to use PyTorch's implementation. See:
+    # https://github.com/keras-team/keras/blob/main/requirements.txt
     - pytorch  # [osx]
+  run_constrained:
+    - tensorflow-base >=2.0
 
 test:
   imports:
     - keras_tuner
     - keras_tuner.applications
+    - keras_tuner.src.backend
+    - keras_tuner.src.distribute
     - keras_tuner.engine
     - keras_tuner.oracles
+    - keras_tuner.src.protos
     - keras_tuner.tuners
   commands:
     - pip check
   requires:
     - pip
+    # - scikit-learn
+    # - scipy
+    # - tensorflow >=2.0
+    # - tensorflow-cpu
+    # - keras
+    # - pytorch  # [osx]
 
 about:
   home: https://github.com/keras-team/keras-tuner
