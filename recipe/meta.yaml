@@ -29,7 +29,6 @@ requirements:
     - requests
     - kt-legacy
     - tensorflow >=2.0
-    - tensorflow-cpu
     - scikit-learn
     - scipy
     # Required on OSX as Keras 3.x has a hard dependency on PyTorch for certain operations.
