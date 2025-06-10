@@ -1,5 +1,5 @@
 {% set name = "keras-tuner" %}
-{% set version = "1.2.1" %}
+{% set version = "1.4.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,38 +7,42 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 21478f73e6f1ce5a34e8b378eb10dc935a5e6e6eb74deb46131cd23653d13422
+  sha256: 6befd25ee81476e6207d8ca7ed7dc674b8194437cfa0b127294cd00da905ff22
 
 build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  # No tensorflow for python 3.13
+  skip: True  # [py<37 or py>=313]
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python
+    - setuptools
+    - wheel
+    - pytorch  # [osx]
   run:
-    - python >=3.7
-    - Ipython
-    - kt-legacy
-    - numpy
+    - python
+    - keras
     - packaging
     - requests
+    - kt-legacy
+    - tensorflow >=2.17
     - scikit-learn
     - scipy
-    - tensorboard
-    - tensorflow >=2.0
-
+  run_constrained:
+    - tensorflow-base >=2.0
 
 test:
   imports:
     - keras_tuner
     - keras_tuner.applications
-    - keras_tuner.distribute
+    - keras_tuner.src.backend
+    - keras_tuner.src.distribute
     - keras_tuner.engine
     - keras_tuner.oracles
-    - keras_tuner.protos
+    - keras_tuner.src.protos
     - keras_tuner.tuners
   commands:
     - pip check
@@ -51,6 +55,7 @@ about:
   license_family: APACHE
   license_file: LICENSE
   summary: Hypertuner for Keras
+  description: KerasTuner is an easy-to-use, scalable hyperparameter optimization framework that solves the pain points of hyperparameter search.
   doc_url: https://keras-team.github.io/keras-tuner/
   dev_url: https://github.com/keras-team/keras-tuner
 
