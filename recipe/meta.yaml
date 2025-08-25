@@ -12,7 +12,7 @@ source:
 build:
   # No tensorflow for python 3.13
   skip: True  # [py<37 or py>=313]
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -21,7 +21,7 @@ requirements:
     - python
     - setuptools
     - wheel
-    - pytorch  # [osx]
+    - pytorch {{ pytorch }}  # [osx]
   run:
     - python
     - keras
