@@ -1,18 +1,17 @@
 {% set name = "keras-tuner" %}
-{% set version = "1.4.7" %}
+{% set version = "1.4.8" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6befd25ee81476e6207d8ca7ed7dc674b8194437cfa0b127294cd00da905ff22
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 809e78538ea5c8e048012ef1d680712d56f28cf9dfa4938a2daace1ab30c4828
 
 build:
-  # No tensorflow for python 3.13
-  skip: True  # [py<37 or py>=313]
-  number: 1
+  skip: True  # [py<37]
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -21,14 +20,12 @@ requirements:
     - python
     - setuptools
     - wheel
-    - pytorch {{ pytorch }}  # [osx]
   run:
     - python
     - keras
     - packaging
     - requests
     - kt-legacy
-    - tensorflow >=2.17
     - scikit-learn
     - scipy
   run_constrained:
@@ -48,6 +45,7 @@ test:
     - pip check
   requires:
     - pip
+    - tensorflow
 
 about:
   home: https://github.com/keras-team/keras-tuner
@@ -55,7 +53,9 @@ about:
   license_family: APACHE
   license_file: LICENSE
   summary: Hypertuner for Keras
-  description: KerasTuner is an easy-to-use, scalable hyperparameter optimization framework that solves the pain points of hyperparameter search.
+  description: |
+    KerasTuner is an easy-to-use, scalable hyperparameter optimization 
+    framework that solves the pain points of hyperparameter search.
   doc_url: https://keras-team.github.io/keras-tuner/
   dev_url: https://github.com/keras-team/keras-tuner
 
