@@ -45,7 +45,7 @@ test:
     - pip check
   requires:
     - pip
-    - tensorflow
+    - tensorflow >=2.20
 
 about:
   home: https://github.com/keras-team/keras-tuner
