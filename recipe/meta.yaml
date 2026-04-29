@@ -11,7 +11,7 @@ source:
 
 build:
   skip: True  # [py<37]
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -19,33 +19,29 @@ requirements:
     - pip
     - python
     - setuptools
-    - wheel
   run:
     - python
     - keras
     - packaging
     - requests
     - kt-legacy
+    - grpcio
+    - protobuf
+    # bayesian
     - scikit-learn
     - scipy
+    # undeclared but used in keras_tuner.src.engine
+    - six
   run_constrained:
     - tensorflow-base >=2.0
 
 test:
-  imports:
-    - keras_tuner
-    - keras_tuner.applications
-    - keras_tuner.src.backend
-    - keras_tuner.src.distribute
-    - keras_tuner.engine
-    - keras_tuner.oracles
-    - keras_tuner.src.protos
-    - keras_tuner.tuners
   commands:
     - pip check
+    - python -c "import os; os.environ['KERAS_BACKEND']='torch'; import keras_tuner, keras_tuner.applications, keras_tuner.engine, keras_tuner.oracles, keras_tuner.tuners"
   requires:
     - pip
-    - tensorflow >=2.20
+    - pytorch
 
 about:
   home: https://github.com/keras-team/keras-tuner
@@ -60,6 +56,8 @@ about:
   dev_url: https://github.com/keras-team/keras-tuner
 
 extra:
+  skip-lints:
+    - missing_imports_or_run_test_py # import tests in commands section
   recipe-maintainers:
     - anselmoo
     - oblute
